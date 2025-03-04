@@ -20,7 +20,11 @@ if __name__ == "__main__":
     parser.add_argument("minutes", type=int, nargs='?', default=60,
         help="Number of minutes to wait between screen flashes (default: 60)")
     args = parser.parse_args()
+    assert args.minutes >= 1
 
     while True:
+        for time_left in range(args.minutes, 0, -1):
+            print(f"Time left: {time_left} minutes")
+            time.sleep(1 * 60)
         show_message()
-        time.sleep(args.minutes * 60)  # Wait for the specified number of minutes
+        
